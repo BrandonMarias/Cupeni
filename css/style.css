@@ -1,0 +1,154 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+html *, html *::after, html *::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #eee;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+#ir-arriba {
+  font-size: 2rem;
+  color: #192a56;
+}
+#ir-arriba .gotop-container {
+  position: fixed;
+  z-index: 1;
+  width: 3rem;
+  height: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #03BCC6;
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: transform 0.4s ease;
+}
+#ir-arriba .show-boton-arriba {
+  transform: scale(1);
+}
+
+main.slides {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: block mandatory;
+  scroll-behavior: smooth;
+}
+main.slides .slide {
+  height: 100%;
+  width: 100%;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+header {
+  background-color: white;
+  width: 100vw;
+  overflow-x: hidden;
+}
+header .nav-bar {
+  color: #192a56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0.7rem 1.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+header .nav-bar .logo {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: bolder;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+header .nav-bar a {
+  font-size: 1rem;
+  color: #666;
+  display: inline-block;
+  padding: 10px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-weight: 800;
+  transition: background-color 0.2s linear, color 0.1s linear;
+}
+header .nav-bar a:hover {
+  background-color: #03BCC6;
+  color: white;
+}
+header .nav-bar nav {
+  display: flex;
+  gap: 1rem;
+}
+header .nav-bar nav i {
+  padding-right: 10px;
+}
+header .nav-bar nav a:nth-child(1) {
+  background-color: #03BCC6;
+  color: white;
+}
+header .nav-bar nav a:nth-child(1):hover {
+  color: #192a56;
+}
+header .nav-bar #boton-menu {
+  display: none;
+  padding: 0.5rem;
+  border: solid 1px #666;
+  border-radius: 4px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  header .nav-bar nav {
+    background-color: white;
+    padding: 10px;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    transition: top 0.3s linear, transform 0.4s ease-out;
+    position: absolute;
+    transform: scaleY(0);
+    top: -100%;
+    left: 0px;
+  }
+  header .nav-bar #boton-menu {
+    display: block;
+  }
+  header .nav-bar .menu-active {
+    top: 55px;
+    transform: scaleY(1);
+  }
+}
+@media only screen and (min-width: 768px) {
+  header .nav-bar {
+    justify-content: space-around;
+  }
+}
+
+.overflow-y {
+  overflow-y: hidden !important;
+}
+
+/*# sourceMappingURL=style.css.map */

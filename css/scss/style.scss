@@ -1,0 +1,179 @@
+
+$base-color: #eee;
+$color1: #03BCC6;
+$color2: #192a56;
+$color3: #666;
+
+@mixin centrar_flex() {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+
+html{
+   box-sizing: border-box;
+   font-size: 16px;
+   *,*::after,*::before{
+      box-sizing: inherit;
+      margin: 0;
+      padding: 0;
+
+   }
+}
+body{
+   background-color: #eee;
+}
+html,body{
+   overflow-x: hidden;
+}
+a{
+   text-decoration: none;
+}
+
+#ir-arriba{
+   font-size: 2rem;
+   color: $color2;
+   
+
+   .gotop-container{
+      position: fixed;
+      z-index: 1;
+      width: 3rem;
+      height: 2rem;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      border-radius: .5rem;
+      background-color: $color1;
+      box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, .1);
+
+      @include centrar_flex();
+      transform: scale(0);
+      transition: transform .4s ease;
+   }
+   
+   .show-boton-arriba{
+      transform: scale(1);
+   }
+   
+}
+
+main.slides{
+   height: 100vh;
+   width: 100%;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   scroll-snap-type: block mandatory;
+   scroll-behavior: smooth;
+
+   .slide{
+      height: 100%;
+      width: 100%;
+      scroll-snap-align: center;
+      @include centrar_flex();
+      flex-direction: column;
+      justify-content: flex-start;
+   }
+}
+
+
+header{
+   background-color: white;
+   width: 100vw;
+   overflow-x: hidden;
+   .nav-bar{
+      color: $color2;
+      @include centrar_flex();
+      justify-content: space-between;
+      flex-wrap: wrap;
+      
+      padding: .7rem 1.5rem;
+      box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+      .logo{
+         text-transform: uppercase;
+         letter-spacing: 5px;
+         font-weight: bolder;
+         cursor: pointer;
+         font-size: 1.3rem;
+      }
+
+      a{
+         font-size: 1rem;
+         color: $color3;
+         display: inline-block;
+         padding: 10px;
+         text-transform: uppercase;
+         border-radius: 5px;
+         font-weight: 800;
+         transition: background-color .2s linear, color .1s linear;
+         &:hover{
+            background-color: $color1;
+            color: white;
+         }
+         
+      }
+
+      
+
+      nav{
+         display: flex;
+         gap:  1rem;
+         i{
+            padding-right: 10px;
+         }
+         a:nth-child(1){
+            background-color: $color1;
+            color: white;
+
+            &:hover{
+               color: $color2;
+            }
+         }
+      }
+
+      #boton-menu{
+         display: none;
+         padding: .5rem;
+         border: solid 1px #666;
+         border-radius: 4px;
+         cursor: pointer;
+      }
+
+      @media only screen and (max-width: 768px){
+         nav{
+            background-color: white;
+            padding: 10px;
+            width: 100vw;
+            flex-direction: column;
+            align-items: center;
+            transition: top .3s linear, transform .4s ease-out;
+            position: absolute;
+            transform: scaleY(0);
+            top: -100%;
+            left: 0px;
+         }
+         #boton-menu{
+            display: block;
+         }
+         
+         .menu-active{
+            top: 55px;
+            transform: scaleY(1);
+         }
+      }
+
+      
+   }
+
+   @media only screen and (min-width: 768px){
+      .nav-bar{
+         justify-content: space-around;
+      }
+      
+   }
+
+}
+
+.overflow-y{
+   overflow-y: hidden !important;
+}
